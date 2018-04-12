@@ -1,0 +1,25 @@
+
+<ion-content padding>
+  <img src="../../assets/images/login-logo.png">
+
+
+    <div class="hrLine"></div>
+
+    <ion-list no-lines padding-top>
+      <ion-item>
+        <ion-icon name="person" item-start></ion-icon> 
+        <ion-input placeholder="User" type="text" [(ngModel)]="user.nickname"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-icon name="lock" item-start></ion-icon> 
+        <ion-input placeholder="Password" type="password" [(ngModel)]="user.password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button ion-button block round (click)="login(user)" color="secondary">Login</button>
+
+    <div padding-top>
+        <button ion-button block round (click)="signupPage();" color="dark">SIGNUP</button>
+        <button ion-button block round (click)="dashboardPage();" color="dark">dashboard</button>
+   </div>
+
+</ion-content>
