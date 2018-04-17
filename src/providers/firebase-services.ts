@@ -5,8 +5,16 @@ import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage'
 @Injectable()
 export class FirebaseProvider {
  
+  dbRecord:AngularFireList<any>;
+
   constructor(private db: AngularFireDatabase, private afStorage: AngularFireStorage) { }
  
+  insert(table:string, insertObject:any){
+    this.dbRecord = this.db.list('/'+table);
+    const newSongRef = this.dbRecord.push({});
+            newSongRef.set(insertObject);
+  }
+
   getFiles() {
     let ref = this.db.list('files');
  
@@ -30,7 +38,6 @@ export class FirebaseProvider {
     }
     return this.db.list('files').push(toSave);
   }
- 
  
   deleteFile(file) {
     let key = file.key;

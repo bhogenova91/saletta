@@ -1,3 +1,19 @@
 page-dashboard {
     ion-slides{ max-height:23%;}
 }
+
+
+.div-user {
+    align-items: center;
+    margin: 0 auto;
+    background-color:green;
+    
+}
+
+.circle-pic{
+    width:150px;
+    height:150px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    align-content: center;
+}

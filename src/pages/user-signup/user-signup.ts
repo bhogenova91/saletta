@@ -19,26 +19,30 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 })
 export class UserSignup {
 
-  songs: any;
+  
   user = {} as User;
   confirmPassword : string;
   files: Observable<any[]>;
   userFirebaseList: AngularFireList<any>;
   //base64Image:any;
 
-  constructor(/*public camera:Camera, */public navCtrl: NavController, private ofAuth: AngularFireAuth,
-    private firebaseProvider: FirebaseProvider, private alertCtrl: AlertController, private toastCtrl: ToastController, private iab: InAppBrowser, private AfDatabase : AngularFireDatabase) {
-      this.songs = AfDatabase.list('/songs').valueChanges();
-     // this.files = this.firebaseProvider.getFiles();
+  constructor(public navCtrl: NavController, private ofAuth: AngularFireAuth,
+    private firebaseProvider: FirebaseProvider, private alertCtrl: AlertController, 
+    private toastCtrl: ToastController, private iab: InAppBrowser) {
+    
     }
 
-  checkPasswor(user)
-  {
-    user.email = user.nickname + "@lasaletta.bho";
-    if(this.confirmPassword === user.password)
-      this.register(user)
+  checkUser(user){
+    if(user.nickname !="" && user.password !="" && user.confirmPassword !="")
+    {
+      user.email = user.nickname + "@lasaletta.bho";
+      if(this.confirmPassword === user.password)
+        this.register(user)
+      else
+        alert("le password non corrispondono");
+    }
     else
-      alert("Passwords do not match");
+      alert("Compilare tutti i campi");     
   }
 
   async register(user: User){
@@ -51,7 +55,6 @@ export class UserSignup {
       alert(e.message);
     }
   }
-
 
   addFile() {
     let inputAlert = this.alertCtrl.create({
@@ -94,37 +97,11 @@ export class UserSignup {
   }
 
 
-  addSong(){
-    let prompt = this.alertCtrl.create({
-      title: 'Song Name',
-      message: "Enter a name for this new song you're so keen on adding",
-      inputs: [
-        {
-          name: 'title',
-          placeholder: 'Title'
-        },
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Save',
-          handler: data => {
-            const newSongRef = this.songs.push({});
-   
-            newSongRef.set({
-              id: newSongRef.key
-            });
-          }
-        }
-      ]
-    });
-    prompt.present();
+  firebaseAddUser(){
+    this.firebaseProvider.insert("users", this.user);
   }
+
+
   /*accessGallery(){
     this.camera.getPicture({
       sourceType: this.camera.PictureSourceType.SAVEDPHOTOALBUM,

@@ -4,12 +4,15 @@
 
     <ion-list no-lines padding-top> 
       <ion-item>
+          <ion-icon name="person" item-start></ion-icon> 
         <ion-input type="text" round placeholder="Nick Name"  [(ngModel)]="user.nickname"></ion-input>
       </ion-item>
       <ion-item>
+          <ion-icon name="lock" item-start></ion-icon> 
         <ion-input type="password" placeholder="Password"  [(ngModel)]="user.password"></ion-input>
       </ion-item>
       <ion-item>
+          <ion-icon name="lock" item-start></ion-icon> 
         <ion-input type="password" placeholder="Confirm Password"  [(ngModel)]="confirmPassword"></ion-input>
       </ion-item>
     </ion-list>
@@ -20,8 +23,7 @@
       <button ion-fab size="20px" color="primary" (click)="addFile()">
         <ion-icon size="large" name="cloud-upload"></ion-icon>
       </button>
-      <button ion-button block round color="secondary" (click)="checkPasswor(user)">Signup</button>
-      <button ion-button block round color="secondary" (click)="addSong()">ddddd</button>
+      <button ion-button block round color="secondary" (click)="checkUser(user)">Signup</button>on>
 </ion-content>
 
 
