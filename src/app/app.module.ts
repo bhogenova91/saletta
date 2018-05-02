@@ -9,35 +9,40 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import { UserLogin } from '../pages/user-login/user-login';
 import { UserSignup } from '../pages/user-signup/user-signup';
-import { UserForgotpassword } from '../pages/user-forgotpassword/user-forgotpassword';
 import { Dashboard } from '../pages/dashboard/dashboard';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { FirebaseProvider } from '../providers/firebase-services';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { DatePipe } from '@angular/common';
+import { IonicStorageModule } from '@ionic/storage';
+import { OneSignal } from '@ionic-native/onesignal';
 
 @NgModule({
   declarations: [ 
     MyApp,
     UserLogin,
     UserSignup,
-    UserForgotpassword,
     Dashboard
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireAuthModule,
     AngularFireStorageModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    IonicStorageModule.forRoot({
+      name: 'salettadb',
+         driverOrder: ['indexeddb', 'sqlite', 'websql']
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     UserLogin,
     UserSignup,
-    UserForgotpassword,
     Dashboard
   ],
   providers: [
@@ -45,6 +50,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     SplashScreen,
     FirebaseProvider,
     InAppBrowser,
+    DatePipe,
+    OneSignal,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -3,11 +3,9 @@
     <ion-header>
       <ion-toolbar>
         <ion-item no-lines>
-          <ion-avatar item-left>
-            <h2>G</h2>
-          </ion-avatar>
-          <h2>Hello,</h2>
-          <p>{{ user.nickname }}</p>
+
+            <h3>SETTING</h3>
+      
         </ion-item>
         <ion-buttons end>
           <button ion-button icon-only >
@@ -19,7 +17,7 @@
     
     <ion-content>
       <ion-list no-lines>
-        <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        <button ion-item *ngFor="let p of actions" (click)="actionMenu(p.action)">
           <ion-icon name="{{p.icon}}"></ion-icon>  {{p.title}}
         </button>
       </ion-list>
