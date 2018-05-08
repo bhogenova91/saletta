@@ -13,3 +13,28 @@
     .item{border:$border-color 1px solid !important; margin-bottom:10px;}
   }
 }
+
+
+hr.style5 {
+	background-color: #fff;
+	border-top: 2px dashed #8c8b8b;
+}
+
+ion-item {
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+ion-item.item {
+  background-color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 1px;
+  .label {
+    width: 10%;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 1.2em;
+  }
+}
+
+

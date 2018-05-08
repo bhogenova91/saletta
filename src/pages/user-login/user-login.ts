@@ -5,7 +5,7 @@ import { UserSignup } from '../user-signup/user-signup';
 import {User} from '../../models/user';
 import {AngularFireAuth}from 'angularfire2/auth';
 import { Storage } from '@ionic/storage';
-
+import { TabsPage } from '../../pages/tabs/tabs';
 
 @Component({
   selector: 'page-user-login',
@@ -18,7 +18,7 @@ export class UserLogin {
     private storage: Storage) {
       
       if(navParams.get("isLog"))
-          this.navCtrl.push(Dashboard, {user: navParams.get("user")})
+          this.navCtrl.push(TabsPage, {user: navParams.get("user")})
   }
 
   async login(user: User){
@@ -29,7 +29,7 @@ export class UserLogin {
     try{   
           const result = await this.ofAuth.auth.signInWithEmailAndPassword(user.email, user.password);
           if(result)
-            this.navCtrl.push(Dashboard, {user: this.user.nickname});
+            this.navCtrl.push(TabsPage, {user: this.user.nickname});
     }
     catch(e){
           alert(e.message); 

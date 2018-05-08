@@ -25,7 +25,7 @@ public payRefView: firebase.database.Reference = firebase.database().ref('/payme
     private alertCtrl: AlertController,
     private firebaseProvider: FirebaseProvider){
 
-        this.user.nickname = navParams.get("user")
+        this.user.nickname = navParams.data;//navParams.get("user")
   }
 
   ionViewDidLoad() {

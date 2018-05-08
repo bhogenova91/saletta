@@ -1,0 +1,14 @@
+.tabs .tabbar {
+    background-color: #17202a;
+  }
+
+  .tabs-md .tab-button[aria-selected=true] .tab-button-icon{
+    color:white;
+    font-size: 45px;
+}
+
+.tabs-md .tab-button[aria-selected=false] .tab-button-icon{
+    font-size: 35px;
+    color:rgb(121, 116, 116)
+}
+

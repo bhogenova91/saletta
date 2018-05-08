@@ -17,13 +17,17 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { DatePipe } from '@angular/common';
 import { IonicStorageModule } from '@ionic/storage';
 import { OneSignal } from '@ionic-native/onesignal';
+import { Usernote } from '../pages/user-note/user-note';
+import { TabsPage } from '../pages/tabs/tabs';
 
 @NgModule({
   declarations: [ 
     MyApp,
     UserLogin,
     UserSignup,
-    Dashboard
+    Dashboard,
+    Usernote,
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,9 @@ import { OneSignal } from '@ionic-native/onesignal';
     MyApp,
     UserLogin,
     UserSignup,
-    Dashboard
+    Dashboard,
+    Usernote,
+    TabsPage
   ],
   providers: [
     StatusBar,

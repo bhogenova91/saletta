@@ -11,6 +11,8 @@ import { FirebaseProvider } from '../providers/firebase-services';
 import { AlertController } from 'ionic-angular';
 import { OneSignal } from '@ionic-native/onesignal';
 import { POINT_CONVERSION_COMPRESSED } from 'constants';
+import { Usernote } from '../pages/user-note/user-note';
+import { TabsPage } from '../pages/tabs/tabs';
 
 @Component({
   templateUrl: 'app.html'
@@ -54,6 +56,7 @@ export class MyApp {
 
     this.actions = [
       { title: 'Add Payment',icon:'paper',action:"insertPayment" },
+      { title: 'Note',icon:'book',action:"goNote" },
       { title: 'LogOut',icon:'unlock',action:"logOut" }
     ];
     
@@ -77,7 +80,12 @@ export class MyApp {
           .endInit();
       });
   }
-   
+  
+  goNote(){
+    this.nav.push(Usernote)
+    this.menu.close();
+  }
+
   setUser(){
     this.storage.get('isLog').then((value) => {
       this.isLog = JSON.parse(value)
@@ -213,6 +221,8 @@ export class MyApp {
       this.insertPayment()
     else if(action == "logOut")
       this.logOut();
+    else if(action == "goNote")
+      this.goNote()
 
   }
 
@@ -258,7 +268,6 @@ export class MyApp {
     };
 
     sendNotification(message);
-alert(notifyMessage)
   }
 }
 

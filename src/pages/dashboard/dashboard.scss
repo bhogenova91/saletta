@@ -1,8 +1,16 @@
 page-dashboard {
     ion-slides{ max-height:23%;}
+    
 }
 
+.item{
+    margin:10px auto;
+    width:98%;
+  }
 
+.scroll-content{
+background-image: url('../assets/images/bg-pattern.png');
+}
 
 .circle-pic{
     width:150px;
@@ -10,4 +18,18 @@ page-dashboard {
     -webkit-border-radius: 50%;
     border-radius: 50%;
     align-content: center;
+}
+
+.toolbar-background {
+    font-family: harrington-normal;
+  background-color: #172e49;
+  text-align:center;
+}
+
+.titleicon {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    
 }

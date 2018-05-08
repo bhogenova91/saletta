@@ -1,7 +1,6 @@
 <ion-content padding>
-   <img src="assets/images/login-logo.png">
-    <div class="hrLine"></div>
-
+  <img src="assets/images/name-log.png">
+    
     <ion-list no-lines padding-top> 
       <ion-item>
           <ion-icon name="person" item-start></ion-icon> 
@@ -16,8 +15,9 @@
         <ion-input type="password" placeholder="Confirm Password"  [(ngModel)]="confirmPassword"></ion-input>
       </ion-item>
     </ion-list>
-      <button ion-button block round color="secondary" (click)="checkUser(user)">Signup</button>
-      <button ion-button block round color="dark" (click)="goLogin()">Login</button>
-</ion-content>
+      <button ion-button block round color="secondary" (click)="checkUser(user)" style="background-color:forestgreen; color:lightgray">Signup</button>
+      <button ion-button block round color="dark" (click)="goLogin()"  style="background-color:seagreen; color:lightgray">Login</button>
+      <img src="assets/images/wine-log.png">
+  </ion-content>
 
 
