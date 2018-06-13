@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar  hideBackButton="true">
-    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
-    <ion-title text-center> LA SALETTA</ion-title>
+      
+    <ion-title text-center><img src="assets/images/name-dash.png"></ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -9,9 +9,10 @@
   <ion-list>
       <ion-item *ngFor="let note of notes">
         <ion-thumbnail item-start>
-            <img src="assets/images/dashboard/icoNote.png">
+          <button style="height: 80px;" ion-button clear item-end (click)="showNote(note.note)"><img src="assets/images/dashboard/icoNote.png"></button>
           </ion-thumbnail>
-          <b>Nota:</b> {{note}}
+          {{note.note}}
+          <button ion-button clear item-end (click)="deleteNote(note.id)">DELETE</button>
         </ion-item>
     </ion-list>
 

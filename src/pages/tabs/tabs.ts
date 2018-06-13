@@ -17,11 +17,12 @@ export class TabsPage {
   tab3Root = Dashboard;
 
   user = {} as User;
+  exit = {} as String;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams) {
-
+      
       this.user.nickname = navParams.get("user")
 
   }

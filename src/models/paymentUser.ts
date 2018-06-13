@@ -6,5 +6,5 @@ export interface PaymentUser {
     paymentId : String
     nickname : String
     noteuser: String
-    isPay: Boolean
+    isPay: String
 }

@@ -33,3 +33,22 @@ background-image: url('../assets/images/bg-pattern.png');
     bottom: 0;
     
 }
+
+.ion-item{
+    border-bottom-left-radius: 15%;
+    border-bottom-right-radius: 15;
+    border-top-left-radius: 15%;
+    border-top-right-radius: 15%;
+    
+}
+
+
+.item-md .item-button{
+    width: 100px;
+    height: 30px;
+}
+
+
+.list-md .item-block .item-inner{
+    border-bottom:  0px;
+}

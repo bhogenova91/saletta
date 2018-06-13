@@ -6,8 +6,11 @@ import firebase from 'firebase';
 export class FirebaseProvider {
  
   dbRecord:AngularFireList<any>;
+  dbUpdate:AngularFireList<any>;
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private db: AngularFireDatabase) { 
+    
+  }
  
   insert(table:string, insertObject:any){
     this.dbRecord = this.db.list('/'+table);
@@ -22,6 +25,13 @@ export class FirebaseProvider {
   read(ref: firebase.database.Reference){
     ref.on('value', paySnapshot => {
     return paySnapshot
+    });
+  }
+
+  update(paymentId:string){
+    this.dbUpdate = this.db.list('/paymentuser/');
+    this.dbUpdate.update(paymentId, {
+      isPay: 1
     });
   }
 

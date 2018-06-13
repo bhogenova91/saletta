@@ -18,6 +18,7 @@ import { DatePipe } from '@angular/common';
 import { IonicStorageModule } from '@ionic/storage';
 import { OneSignal } from '@ionic-native/onesignal';
 import { Usernote } from '../pages/user-note/user-note';
+import { UserPay } from '../pages/user-pay/user-pay';
 import { TabsPage } from '../pages/tabs/tabs';
 
 @NgModule({
@@ -27,6 +28,7 @@ import { TabsPage } from '../pages/tabs/tabs';
     UserSignup,
     Dashboard,
     Usernote,
+    UserPay,
     TabsPage
   ],
   imports: [
@@ -49,6 +51,7 @@ import { TabsPage } from '../pages/tabs/tabs';
     UserSignup,
     Dashboard,
     Usernote,
+    UserPay,
     TabsPage
   ],
   providers: [

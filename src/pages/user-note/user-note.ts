@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
-
+import { FirebaseProvider } from './../../providers/firebase-services';
+import firebase from 'firebase';
+import {User} from '../../models/user';
+import {Note} from '../../models/note';
 
 @Component({
   selector: 'page-user-note',
@@ -9,17 +12,38 @@ import { AlertController } from 'ionic-angular';
 })
 export class Usernote {
 
-  notes :Array<String> = []
+  public userRefView: firebase.database.Reference = firebase.database().ref('/noteuser');
+  notes :Array<Note> = []
+  user = {} as User;
 
   constructor(
+    private firebaseProvider: FirebaseProvider,
     public navCtrl: NavController, 
     public navParams: NavParams, 
     private alertCtrl: AlertController){
 
-      this.notes.push("nota1")
-      this.notes.push("nota2")
-      this.notes.push("nota3")
-      this.notes.push("nota4")
+      this.user.nickname = navParams.data;
+   
+
+      this.userRefView.on('value', paySnapshot => {
+        this.notes =[]
+        paySnapshot.forEach( paySnapshotV => {
+    
+          if(paySnapshotV.val().nickname == this.user.nickname)
+          { 
+            var note = {} as Note
+            note.nickname = navParams.data;
+            note.id = paySnapshotV.key;
+            note.note = paySnapshotV.val().note;
+            this.notes.push(note);  
+          }    
+ 
+            return false;
+      });
+      console.log(this.notes);
+      this.notes = this.notes.reverse();
+      console.log(this.notes);
+      });
 
   }
 
@@ -27,5 +51,16 @@ export class Usernote {
 
   }
 
+  deleteNote(id : String){
+    this.firebaseProvider.remove(id, "noteuser")
+  }
+
+  showNote(note:string) {
+    let alert = this.alertCtrl.create({
+      title: note,
+      buttons: ['Ok']
+    });
+    alert.present();
+  }
    
 }

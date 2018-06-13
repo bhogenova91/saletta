@@ -1,29 +1,3 @@
-<ion-menu [content]="content" type="overlay"  persistent="true" >
 
-    <ion-header>
-      <ion-toolbar>
-        <ion-item no-lines>
-
-            <h3>SETTING</h3>
-      
-        </ion-item>
-        <ion-buttons end>
-          <button ion-button icon-only >
-            <ion-icon name="settings"></ion-icon>
-          </button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-header>
-    
-    <ion-content>
-      <ion-list no-lines>
-        <button ion-item *ngFor="let p of actions" (click)="actionMenu(p.action)">
-          <ion-icon name="{{p.icon}}"></ion-icon>  {{p.title}}
-        </button>
-      </ion-list>
-    </ion-content>
-    
-    </ion-menu>
-    
     <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
     

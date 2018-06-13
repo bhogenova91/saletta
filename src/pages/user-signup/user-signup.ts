@@ -7,6 +7,7 @@ import {User} from '../../models/user';
 import { FirebaseProvider } from './../../providers/firebase-services';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Storage } from '@ionic/storage';
+import { TabsPage } from '../../pages/tabs/tabs';
 @Component({
   selector: 'page-user-signup',
   templateUrl: 'user-signup.html',
@@ -15,13 +16,16 @@ export class UserSignup {
 
   user = {} as User;
   confirmPassword : string;
+  userOnsignalId: String;
 
   constructor(
     public navCtrl: NavController, 
     private ofAuth: AngularFireAuth,
     private firebaseProvider: FirebaseProvider,  
     private storage: Storage) {
+ 
     }
+
 
   checkUser(user){
     if(user.nickname !="" && user.password !="" && user.confirmPassword !="")
@@ -44,7 +48,8 @@ export class UserSignup {
         this.storage.set(`isLog`, true);
         this.storage.set(`user`,this.user.nickname);
         this.firebaseAddUser()
-        this.navCtrl.push(Dashboard, {user: user.nickname});
+        this.navCtrl.push(TabsPage, {user: this.user.nickname})
+        //this.navCtrl.push(Dashboard, {user: user.nickname});
       }
     }
     catch(e){
@@ -53,7 +58,11 @@ export class UserSignup {
   }
 
   firebaseAddUser(){
-    this.firebaseProvider.insert("users", this.user);
+    this.storage.get('idOnesignal').then((value) => {
+      this.user.onesignalid = value
+      this.firebaseProvider.insert("users", this.user);
+    });
+    
   }
 
   goLogin(){

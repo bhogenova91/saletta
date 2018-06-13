@@ -10,13 +10,22 @@
         <ion-item *ngFor="let pay of paymentList" >
           <b>Da pagare:</b>  {{ pay.amount }} €
           <ion-thumbnail item-start>
-              <img src="assets/images/dashboard/ico{{pay.type}}.png">
+              <button style="height: 80px;" ion-button clear item-end (click)="userPay(pay.type, pay.data)"><img src="assets/images/dashboard/ico{{pay.type}}.png"></button>
             </ion-thumbnail>
             <h2><b>Data:</b> {{pay.data}}</h2>
-            <button ion-button style="background-color:red" (click)="showNote(pay.note)">Note</button>
-            <button ion-button style="background-color:green"(click)="goPay(pay)" [disabled]="pay.isPay">Pay</button>
-            <button ion-button style="background-color:yellow; color: black"(click)="viewPay(pay)">View</button>
+            
+            <button ion-button (click)="showNote(pay.note)" style="color: #d6d6d6; background-color: hsl(174, 26%, 40%); font-size: 20px; font-family: cursive;" round>Note</button>
+           
         </ion-item>
       </ion-list>
-  
+
+      <ion-fab right bottom>
+        <button ion-fab color="red"><ion-icon name="arrow-dropup"></ion-icon></button>
+        <ion-fab-list side="top">
+          <button ion-fab><ion-icon name="beer"></ion-icon></button>
+          <button ion-fab (click)="addNote()"><ion-icon name="clipboard"></ion-icon></button>
+          <button ion-fab (click)="insertPayment()"><ion-icon name="paper"></ion-icon></button>
+          <button ion-fab (click)="logOut()"><ion-icon name="unlock"></ion-icon></button>
+        </ion-fab-list>
+      </ion-fab>
 </ion-content>
