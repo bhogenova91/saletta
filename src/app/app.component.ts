@@ -42,7 +42,6 @@ export class MyApp {
         this.setUser();
 
         var notificationOpenedCallback = function(jsonData) {
-          console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
         };
 
         var getPlayerIdCallback = function (response){

@@ -3,4 +3,5 @@ export interface User {
     email: string;
     password: string;
     onesignalid : string;
+    isAdmin: boolean;
 }

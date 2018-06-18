@@ -28,10 +28,10 @@ export class FirebaseProvider {
     });
   }
 
-  update(paymentId:string){
+  updatePay(paymentId:string, isPay:string){
     this.dbUpdate = this.db.list('/paymentuser/');
     this.dbUpdate.update(paymentId, {
-      isPay: 1
+      isPay: isPay
     });
   }
 

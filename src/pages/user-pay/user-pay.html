@@ -12,7 +12,7 @@
             <img src="assets/images/userpay/{{payment.isPay}}.png">
             </ion-thumbnail>
             {{payment.nickname}}
-            <button ion-button clear item-end (click)="confirmPay(payment.paymentId)">CONFIRM PAYMENT</button>
+            <button ion-button clear item-end (click)="confirmPay(payment.paymentId, payment.isPay)">{{ payment.isPay === '0' ? 'CONFIRM PAYMENT' : 'DELETE PAYMENT' }}</button>
           </ion-item>
       </ion-list>
 

@@ -128,6 +128,12 @@ export class Dashboard {
         type:'radio',
         label:'ADSL',
         value:'ADSL'
+      }
+      ,
+      {
+        type:'radio',
+        label:'Altro',
+        value:'Altro'
       }],
       buttons : [
       {
@@ -216,7 +222,7 @@ export class Dashboard {
           this.paymentUserInsert.isPay = "0"
           this.paymentUserInsert.noteuser =""
           this.firebaseProvider.insert("paymentuser", this.paymentUserInsert)
-          this.UserpushMessage("pagamento inserito", val.onesignalid)
+          this.UserpushMessage("Notifica: "+this.paymentInsert.type, val.onesignalid)
         }
        });
     });
@@ -245,18 +251,13 @@ export class Dashboard {
       var https =  require('https');
       var req = https.request(options, function(res) {  
         res.on('data', function(data) {
-         console.log("Response:");
-         console.log(JSON.parse(data));
         });
       });
     
       req.on('error', function(e) {
-       console.log("ERROR:");
-       console.log(e);
       });
      
       req.write(JSON.stringify(data));
-      console.log(data);
       req.end();
     };
     
@@ -318,54 +319,11 @@ export class Dashboard {
     alert.addButton({
       text: 'Ok',
       handler: selected => {
+       this.onesignalList= null;
        this.onesignalList = selected
        this.firebaseAddPayment()
       }
     });
     alert.present();
   }
-
-  /*pushMessage(notifyMessage){
-
-    var sendNotification = function(data) {
-      var headers = {
-        "Content-Type": "application/json; charset=utf-8",
-        "Authorization": "Basic M2RhMGI2YmItZDQwYS00MjM1LWExMDMtZGMwYzA0YmU5NTEx"
-      };
-      
-      var options = {
-        host: "onesignal.com",
-        port: 443,
-        path: "/api/v1/notifications",
-        method: "POST",
-        headers: headers
-      };
-      
-      var https =  require('https');
-      var req = https.request(options, function(res) {  
-        res.on('data', function(data) {
-         console.log("Response:");
-         console.log(JSON.parse(data));
-        });
-      });
-    
-      req.on('error', function(e) {
-       console.log("ERROR:");
-       console.log(e);
-      });
-     
-      req.write(JSON.stringify(data));
-      console.log(data);
-      req.end();
-    };
-    
-   
-    var message = { 
-      app_id: "6d161892-b62f-4f74-aa9d-7bc9ecba363c",
-      contents: {"en": notifyMessage},
-      included_segments: ["All"]
-    };
-
-    sendNotification(message);
-  }*/
 }

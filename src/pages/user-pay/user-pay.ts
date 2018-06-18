@@ -19,6 +19,7 @@ export class UserPay {
   payType = {} as String
   songs: AngularFireList<any>;
   
+  
   constructor(
     private firebaseProvider: FirebaseProvider,
     public navCtrl: NavController, 
@@ -50,8 +51,11 @@ export class UserPay {
 
   }
 
-  confirmPay(paymentId:string){
-      this.firebaseProvider.update(paymentId)
+  confirmPay(paymentId:string, isPay:string){
+    if(isPay=="0")
+      this.firebaseProvider.updatePay(paymentId, "1")
+    else
+      this.firebaseProvider.updatePay(paymentId, "0")
   }
 
   updateFunction(questionId){
@@ -59,8 +63,6 @@ export class UserPay {
     sample.list('/paperCode', ref => ref.orderByChild('questionId').equalTo(questionId)).snapshotChanges()
     .subscribe(actions => {
         actions.forEach(action => {
-          // here you get the key
-          console.log(action.key);
           sample.list('/paperCode').update(action.key, { points: 10 });
         });
     });

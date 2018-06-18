@@ -40,9 +40,7 @@ export class Usernote {
  
             return false;
       });
-      console.log(this.notes);
       this.notes = this.notes.reverse();
-      console.log(this.notes);
       });
 
   }

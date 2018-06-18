@@ -60,6 +60,7 @@ export class UserSignup {
   firebaseAddUser(){
     this.storage.get('idOnesignal').then((value) => {
       this.user.onesignalid = value
+      this.user.isAdmin = false;
       this.firebaseProvider.insert("users", this.user);
     });
     
