@@ -233,7 +233,7 @@ export class Dashboard {
   }
 
   UserpushMessage(notifyMessage, arrayUser){
-
+    console.log(arrayUser)
     var sendNotification = function(data) {
       var headers = {
         "Content-Type": "application/json; charset=utf-8",

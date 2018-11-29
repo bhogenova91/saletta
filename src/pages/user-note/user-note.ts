@@ -46,7 +46,6 @@ export class Usernote {
   }
 
   ionViewDidLoad() {
-
   }
 
   deleteNote(id : String){
